@@ -3,51 +3,30 @@
   <display-name>LoginServlet</display-name>
   
   <servlet>
-  <servlet-name> Login1 </servlet-name> 
+  <servlet-name> Login </servlet-name> 
   <servlet-class>login.LoginServlet</servlet-class>
   
   <init-param>
-<param-name>username</param-name>
-<param-value>abc</param-value>
+<param-name>ABC123@abc.com</param-name>
+<param-value>ABC123@abc.com</param-value>
 </init-param>
 
 
   <init-param>
-<param-name>password</param-name>
-<param-value>123</param-value>
+<param-name>DEF456@def.com</param-name>
+<param-value>DEF456@def.com</param-value>
 </init-param>
+
 
 
   </servlet>
   
   <servlet-mapping>
-  <servlet-name> Login1 </servlet-name>
+  <servlet-name> Login </servlet-name>
   <url-pattern>/LoginServlet </url-pattern>
   </servlet-mapping>
   
-  <!-- <servlet>
-  <servlet-name> Login2 </servlet-name> 
-  <servlet-class>login.LoginServlet</servlet-class>
-  
-  <init-param>
-<param-name>username</param-name>
-<param-value>def</param-value>
-</init-param>
-
-
-  <init-param>
-<param-name>password</param-name>
-<param-value>456</param-value>
-</init-param>
-
-
-  </servlet>
-  
-  <servlet-mapping>
-  <servlet-name> Login2 </servlet-name>
-  <url-pattern>/LoginServlet </url-pattern>
-  </servlet-mapping> -->
-  
+   
   <welcome-file-list>
     <welcome-file>LoginPage.jsp</welcome-file>
     

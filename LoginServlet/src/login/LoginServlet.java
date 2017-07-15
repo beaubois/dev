@@ -1,6 +1,8 @@
 package login;
 
 import java.io.IOException;
+import java.util.Enumeration;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,29 +17,49 @@ public class LoginServlet extends HttpServlet {
 	
 	
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
 		String username;
 		String password;
 		
-		username = request.getParameter("username");
+		boolean flag = false;
+		
+		username = request.getParameter("email");
 		password = request.getParameter("password");
 		
-//				String temp = username;
 				
-		if( username.equals(getServletConfig().getInitParameter("username"))
-			&& password.equals(getServletConfig().getInitParameter("password")))
+				
+		
+		Enumeration<String> initParams = getServletConfig().getInitParameterNames(); 
+		
+				while(initParams.hasMoreElements())
+				{
+					String usernameInitParams = initParams.nextElement();
+					String passwordInitParams = getServletConfig().getInitParameter(usernameInitParams);
+							
+					if( usernameInitParams.equals(username) && passwordInitParams.equals(password))
+						{
+							flag = true;
+						
+							request.setAttribute("value", username);
+							
+							break;
+							
+						}
+				}
+		
+		
+		
+		if(!flag)
 		{
-			request.setAttribute("value", username);
-			request.getRequestDispatcher("/userLogged.jsp").forward(request, response);
 			
-			//response.sendRedirect("userLogged.jsp");
-		
-		}
-		
-		else
 			request.getRequestDispatcher("/invalidLogin.jsp").forward(request, response);
+		}
+		else
+		{
+			request.getRequestDispatcher("/userLogged.jsp").forward(request, response);
+		}
 		 //response.sendRedirect("invalidLogin.jsp");
 					
 		

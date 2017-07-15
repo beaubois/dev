@@ -9,7 +9,7 @@
 <body>
  <%Object value = request.getAttribute("value"); %>
  
-<p>Hello <%=value %></p>
+<p>Hello <%=value %> <br> hello ${value}</p>
 
 </body>
 </html>
